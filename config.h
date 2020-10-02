@@ -1,5 +1,6 @@
 /* See LICENSE file for copyright and license details. */
 
+
 /* appearance */
 static const unsigned int borderpx  = 1;        /* border pixel of windows */
 static const unsigned int snap      = 32;       /* snap pixel */
@@ -21,7 +22,8 @@ static const char *colors[][3]      = {
 };
 
 /* tagging */
-static const char *tags[] = { "1", "2", "3", "4", "5", "6", "7", "8", "9" };
+static const char *tags[] = { "\U00004E00", "\U00004E8C", "\U00004E09", "\U000056DB", "\U00004E94", "\U0000516D", "\U00004E03", "Dev",  "OI"};
+
 
 static const Rule rules[] = {
 	/* xprop(1):
