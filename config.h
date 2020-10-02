@@ -1,3 +1,5 @@
+#include <X11/XF86keysym.h>
+
 /* See LICENSE file for copyright and license details. */
 
 
@@ -66,10 +68,17 @@ static const char *termcmd[]  = { "st", NULL };
 static const char scratchpadname[] = "scratchpad";
 static const char *scratchpadcmd[] = { "st", "-t", scratchpadname, "-g", "120x34", NULL };
 
+/* audio adjustment */
+static const char *upvol[]   = { "amixer", "set", "Master", "5%+", "unmute", NULL  };
+static const char *downvol[]   = { "amixer", "set", "Master", "5%-", "unmute", NULL  };
+
+
 static Key keys[] = {
 	/* modifier                     key        function        argument */
 	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
 	{ MODKEY|ShiftMask,             XK_Return, spawn,          {.v = termcmd } },
+    { 0,                       XF86XK_AudioLowerVolume, spawn, {.v = downvol }  },
+    { 0,                       XF86XK_AudioRaiseVolume, spawn, {.v = upvol   }  },
 	{ MODKEY,                       XK_grave,  togglescratch,  {.v = scratchpadcmd } },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
 	{ MODKEY,                       XK_j,      focusstackvis,  {.i = +1 } },
