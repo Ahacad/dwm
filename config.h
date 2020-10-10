@@ -74,6 +74,9 @@ static const char *scratchpadcmd[] = { "st", "-t", scratchpadname, "-g", "120x34
 /* audio adjustment */
 static const char *upvol[]   = { "amixer", "set", "Master", "5%+", "unmute", NULL  };
 static const char *downvol[]   = { "amixer", "set", "Master", "5%-", "unmute", NULL  };
+/* screen light adjustment */
+static const char *uplight[]   = { "light", "-A", "10" };
+static const char *downlight[]   = { "light", "-U", "10" };
 
 
 static Key keys[] = {
@@ -82,6 +85,8 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_Return, spawn,          {.v = termcmd } },
     { 0,                       XF86XK_AudioLowerVolume, spawn, {.v = downvol }  },
     { 0,                       XF86XK_AudioRaiseVolume, spawn, {.v = upvol   }  },
+    { 0,                       XF86XK_MonBrightnessDown, spawn, {.v = downlight }  },
+    { 0,                       XF86XK_MonBrightnessUp, spawn, {.v = uplight   }  },
 	{ MODKEY,                       XK_grave,  togglescratch,  {.v = scratchpadcmd } },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
 	{ MODKEY,                       XK_Tab,    focusstackvis,  {.i = +1 } },
@@ -93,7 +98,7 @@ static Key keys[] = {
 	{ MODKEY,                       XK_h,      setmfact,       {.f = -0.05} },
 	{ MODKEY,                       XK_l,      setmfact,       {.f = +0.05} },
 	{ MODKEY,                       XK_Return, zoom,           {0} },
-	{ MODKEY,                       XK_Tab,    view,           {0} },
+	//{ MODKEY,                       XK_Tab,    view,           {0} },
 	{ MODKEY|ShiftMask,             XK_c,      killclient,     {0} },
 	{ MODKEY,                       XK_t,      setlayout,      {.v = &layouts[0]} },
 	{ MODKEY,                       XK_f,      setlayout,      {.v = &layouts[1]} },
@@ -109,7 +114,7 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_comma,  tagmon,         {.i = -1 } },
 	{ MODKEY|ShiftMask,             XK_period, tagmon,         {.i = +1 } },
 	{ MODKEY,                       XK_s,      show,           {0} },
-	{ MODKEY,                       XK_h,      hide,           {0} },
+	//{ MODKEY,                       XK_h,      hide,           {0} },
 	TAGKEYS(                        XK_1,                      0)
 	TAGKEYS(                        XK_2,                      1)
 	TAGKEYS(                        XK_3,                      2)
